@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/icon/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/css/stylehomepage.css">
+</head>
+
+<body>
+    <main>
+        <section id="card1">
+            <i class="bi bi-grid-1x2"></i>
+            <div id="imagem">
+                <i class="bi bi-brightness-high"></i>
+                <span>----</span>
+                <img src="./assets/images/gui.jpg" alt="">
+            </div>
+        </section>
+
+        <section id="card2">
+
+            <div id="divc1">
+                <div id="divc1-1">
+                    <span id="d">Invoices</span>
+                    <span id="dd">There are 7 total invoices</span>
+                </div>
+                <div id="divc1-2">
+                    <select name="" id="">
+                        <option value="" disabled selected>Filter by Status</option>
+                        <option value="">Feito</option>
+                        <option value="">Pendente</option>
+                    </select>
+                    <button><i class="bi bi-plus"></i> New Invoices</button>
+                </div>
+            </div>
+            <div class="dados">
+                <label for=""> Titulo</label>
+                <input type="text" id="txttitulo" placeholder="ex:lavar a roupa">
+                <label for=""> Descrição</label>
+                <textarea name="" id="" id="txtdesc"></textarea>
+                <label for=""> Data Prevista de Conclusão</label>
+                <input type="datetime-local" name="" id="txtdata">
+                <div id="card-btn">
+
+                    <button onclick="grd()">Guardar</button>
+                    <button>Cancelar</button>
+                </div>
+
+            </div>
+
+            <ul class="tarefas">
+              <!--  <li>
+                    <span class="id">nganga18</span>
+                    <span class="data">Domingo 23 Abril 2006</span>
+                    <span class="titulo">Titulo</span>
+                    <span class="status"><input type="radio"> Pendente</span>
+                    <span class="btn-content"> Ver Conteúdo <i class="bi bi-chevron-right"></i></span>
+                </li>
+            -->
+            </ul>
+        </section>
+    </main>
+    <script>
+        var bdtarefa = [];
+    
+        function GuardarTarefa(ident, title, descr, datat) {
+            
+            var tarefa = {
+                id: ident + 1,
+                titulo: title,
+                desc: descr,
+                data: datat,
+                estado: false
+            };
+            bdtarefa.push(tarefa);
+        }
+    
+        function mostrarTarefas() {
+            var lista = document.getElementsByClassName("tarefas")[0]; 
+            bdtarefa.forEach((tarefa, index) => {
+                var li = document.createElement("li");
+                li.innerHTML = `
+                    <span class="id">${tarefa.id}</span>
+                    <span class="data">${tarefa.data}</span>
+                    <span class="titulo">${tarefa.titulo}</span>
+                    <span class="status"><input type="radio"> Feito: ${tarefa.estado}</span>
+                    <span class="btn-content"> Ver Conteúdo  <i class="bi bi-chevron-right"></i></span>
+                `;
+                lista.append(li);
+            });
+        }
+    function grd(){
+        var titulo = document.getElementById("txttitulo")
+        var desc = document.getElementById("txtdesc")
+        var data = document.getElementById("txtdata")
+        GuardarTarefa(0, titulo, desc, data);
+        mostrarTarefas();
+
+    }
+    </script>
+    
+</body>
+
+</html>
